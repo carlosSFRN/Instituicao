@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Instituicao.Models
 {
-    public class Usuario
+    public class Turma
     {
         [Key]
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Perfil { get; set; }
     }
 }
