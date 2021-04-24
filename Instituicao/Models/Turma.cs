@@ -8,8 +8,8 @@ namespace Instituicao.Models
 {
     public class Turma
     {
-        [Key]
-        public int Id { get; set; }
-        public string Nome { get; set; }
+        public int IdTurma { get; set; }
+        public string NomeTurma { get; set; }
+        public int EscolaId { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace Instituicao.Models
 {
     public class Aluno
     {
-        [Key]
-        public int Id { get; set; }
-        public string Nome { get; set; }
+        public int IdAluno { get; set; }
+        public string NomeAluno { get; set; }
         public decimal Nota { get; set; }
+        public int TurmaId { get; set; }
     }
 }

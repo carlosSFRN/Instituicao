@@ -17,7 +17,7 @@ namespace Instituicao.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, usuario.Nome.ToString()),
+                    new Claim(ClaimTypes.Name, usuario.NomeUsuario.ToString()),
                     new Claim(ClaimTypes.Role, usuario.Perfil.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),

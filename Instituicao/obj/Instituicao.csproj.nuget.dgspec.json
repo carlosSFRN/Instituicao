@@ -46,6 +46,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.78, )"
+            },
             "Microsoft.AspNetCore.Authentication.Core": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -54,23 +58,13 @@
               "target": "Package",
               "version": "[3.1.14, )"
             },
-            "Microsoft.EntityFrameworkCore": {
+            "System.Configuration.ConfigurationManager": {
               "target": "Package",
-              "version": "[3.1.14, )"
+              "version": "[5.0.0, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[3.1.14, )"
-            },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
-              "target": "Package",
-              "version": "[3.1.14, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[3.1.14, )"
+              "version": "[4.8.2, )"
             }
           },
           "imports": [

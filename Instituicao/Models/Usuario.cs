@@ -9,8 +9,8 @@ namespace Instituicao.Models
     public class Usuario
     {
         [Key]
-        public int Id { get; set; }
-        public string Nome { get; set; }
+        public int IdUsuario { get; set; }
+        public string NomeUsuario { get; set; }
         public string Perfil { get; set; }
     }
 }

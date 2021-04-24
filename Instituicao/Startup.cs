@@ -1,10 +1,10 @@
-using Instituicao.Data;
+using Instituicao.Repositories;
+using Instituicao.Repositories.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,16 +30,16 @@ namespace Instituicao
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            //services.AddScoped<DataContext, DataContext>();
-
-            var connection = Configuration.GetConnectionString("InstituicaoDB");
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
-
             services.AddCors();
             services.AddControllers();
 
             var key = Encoding.ASCII.GetBytes(Settings.Key);
+
+            services.AddTransient<IAuthenticateRepository, AuthenticateRepository>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IEscolaRepository, EscolaRepository>();
+            services.AddTransient<ITurmaRepository, TurmaRepository>();
+            services.AddTransient<IAlunoRepository, AlunoRepository>();
 
             services.AddAuthentication(x =>
             {

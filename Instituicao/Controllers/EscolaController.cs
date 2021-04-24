@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +10,10 @@ using Instituicao.Repositories.Interface;
 namespace Instituicao.Controllers
 {
     [Route("api/{controller}")]
-    public class UsuarioController : Controller
+    public class EscolaController : Controller
     {
-        private readonly IUsuarioRepository _context;
-        public UsuarioController(IUsuarioRepository context)
+        private readonly IEscolaRepository _context;
+        public EscolaController(IEscolaRepository context)
         {
             _context = context;
         }
@@ -22,16 +22,25 @@ namespace Instituicao.Controllers
         [Authorize(Roles = "Professor, Escola")]
         public IActionResult GetList()
         {
-            var list =  _context.GetAll();
+            var list = _context.GetAll();
+
+            return Ok(list);
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Professor, Escola")]
+        public IActionResult GetPorId(int Id)
+        {
+            var list = _context.GetPorId(Id);
 
             return Ok(list);
         }
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Escola")]
-        public IActionResult EditarUsuario([FromRoute] int id, [FromBody] Usuario usuario)
+        public IActionResult EditarUsuario([FromRoute] int id, [FromBody] Escola escola)
         {
-            _context.Edit(usuario);
+            _context.Edit(escola);
 
             return Ok();
         }
@@ -39,10 +48,10 @@ namespace Instituicao.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Escola")]
-        public IActionResult AdicionaUsuario([FromBody] Usuario usuario)
+        public IActionResult AdicionaUsuario([FromBody] Escola escola)
         {
-            _context.Add(usuario);
-            
+            _context.Add(escola);
+
             return Ok();
         }
 
