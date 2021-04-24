@@ -17,5 +17,6 @@ namespace Instituicao.Data
 
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Turma> Turma { get; set; }
+        public DbSet<Aluno> Aluno { get; set; }
     }
 }
