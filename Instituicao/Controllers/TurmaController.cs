@@ -13,9 +13,11 @@ namespace Instituicao.Controllers
     public class TurmaController : Controller
     {
         private readonly ITurmaRepository _context;
-        public TurmaController(ITurmaRepository context)
+        private readonly IEscolaRepository _contextEscola;
+        public TurmaController(ITurmaRepository context, IEscolaRepository contextEscola)
         {
             _context = context;
+            _contextEscola = contextEscola;
         }
 
         [HttpGet]
@@ -42,6 +44,13 @@ namespace Instituicao.Controllers
         [Authorize(Roles = "Escola")]
         public IActionResult EditarUsuario([FromRoute] int id, [FromBody] Turma turma)
         {
+            var list = _contextEscola.GetPorId(turma.EscolaId);
+
+            if (list.IdEscola == null)
+            {
+                return BadRequest("Essa escola não existe");
+            }
+
             _context.Edit(turma);
 
             return Ok();
@@ -52,6 +61,13 @@ namespace Instituicao.Controllers
         [Authorize(Roles = "Escola")]
         public IActionResult AdicionaUsuario([FromBody] Turma turma)
         {
+            var list = _contextEscola.GetPorId(turma.EscolaId);
+
+            if (list.IdEscola == null)
+            {
+                return BadRequest("Essa escola não existe");
+            }
+
             _context.Add(turma);
 
             return Ok();

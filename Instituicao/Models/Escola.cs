@@ -7,7 +7,7 @@ namespace Instituicao.Models
 {
     public class Escola
     {
-        public int IdEscola { get; set; }
+        public int? IdEscola { get; set; }
         public string NomeEscola { get; set; }
     }
 }
