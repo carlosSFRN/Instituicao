@@ -36,6 +36,8 @@ namespace Instituicao.Controllers
             return Ok(list);
         }
 
+        
+
         [HttpPut("{id}")]
         [Authorize(Roles = "Escola")]
         public IActionResult EditarUsuario([FromRoute] int id, [FromBody] Turma turma)

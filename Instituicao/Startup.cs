@@ -40,6 +40,8 @@ namespace Instituicao
             services.AddTransient<IEscolaRepository, EscolaRepository>();
             services.AddTransient<ITurmaRepository, TurmaRepository>();
             services.AddTransient<IAlunoRepository, AlunoRepository>();
+            services.AddTransient<IMediaTurmaRepository, MediaTurmaRepository>();
+            services.AddTransient<IAlunoNotaPorTurmaRepository, AlunoNotaPorTurmaRepository>();
 
             services.AddAuthentication(x =>
             {

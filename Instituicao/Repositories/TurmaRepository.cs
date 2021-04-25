@@ -45,9 +45,10 @@ namespace Instituicao.Repositories
             return listaTurma;
 
         }
+
         public Turma GetPorId(int? id)
         {
-            Turma escola = new Turma();
+            Turma turma = new Turma();
 
             using (SqlConnection con = new SqlConnection(conexao))
             {
@@ -65,12 +66,12 @@ namespace Instituicao.Repositories
 
                 while (rdr.Read())
                 {
-                    escola.IdTurma = Convert.ToInt32(rdr["IdTurma"]);
-                    escola.NomeTurma = rdr["NomeTurma"].ToString();
-                    escola.EscolaId = Convert.ToInt32(rdr["EscolaId"]);
+                    turma.IdTurma = Convert.ToInt32(rdr["IdTurma"]);
+                    turma.NomeTurma = rdr["NomeTurma"].ToString();
+                    turma.EscolaId = Convert.ToInt32(rdr["EscolaId"]);
                 }
             }
-            return escola;
+            return turma;
         }
         public void Add(Turma turma)
         {
